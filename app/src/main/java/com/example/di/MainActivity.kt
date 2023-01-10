@@ -2,8 +2,16 @@ package com.example.di
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+
+    // Field Injection
+    @Inject
+    lateinit var userRegistrationService: UserRegistrationService
+    @Inject
+    lateinit var emailService: EmailService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,9 +40,14 @@ class MainActivity : AppCompatActivity() {
         // 1. How the object created(We ask or request the component to create objects)
         // 2. How it's consume
 
+        // @Inject uses in two ways 1. With fields and 2. Constructor
+        // @Module
+        // @Provides
+        // @Bind
+
         val component = DaggerUserRegistrationComponent.builder().build()
-        val userRegistrationService = component.getUserRegistrationService()
-        val emailService = component.getEmailService()
+        component.inject(this)
+
         userRegistrationService.registerUser("Usama@gmail.com","1111111")
 
     }

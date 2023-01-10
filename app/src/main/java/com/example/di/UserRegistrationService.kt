@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 class UserRegistrationService @Inject constructor(
     private val userRepository: UserRepository,
-    private val emailService:EmailService) {
+    private val notificationService: NotificationService) {
 
     // This implementation violate the all below mentioned points, to overcome this issue
     // we'll used constructor injection (Manual Dependency Injection)
@@ -13,7 +13,7 @@ class UserRegistrationService @Inject constructor(
 
     fun registerUser(email:String,password:String){
         userRepository.saveUser(email, password)
-        emailService.send(email,"no-reply@usama.com","User Registered")
+        notificationService.send(email,"no-reply@usama.com","User Registered")
     }
 }
 
