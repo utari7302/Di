@@ -8,6 +8,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // ----------Dagger Introduction-----------
+
         // Dagger 2 is framework to implement dependency injection, DI can implemented manually
         // Dagger is a fully static, compile-time dependency injection framework
         // Compile time checking is performed if Dagger can create the required objects
@@ -22,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         // Consumer: consumes the object @Inject
         // Producer: produces the object @Module, @Provides, @Binds
         // Connector: bridge between consumer and producer @Component
+
+        // Manual Dependency Injection Constructor injection and Field Injection
+
+
 
         val userRepository = UserRepository()
         val emailService = EmailService()
