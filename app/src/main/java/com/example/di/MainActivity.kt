@@ -27,12 +27,14 @@ class MainActivity : AppCompatActivity() {
 
         // Manual Dependency Injection Constructor injection and Field Injection
 
+        // Dependency Injection with Dagger 2
+        // We've to tell Dagger two points
+        // 1. How the object created(We ask or request the component to create objects)
+        // 2. How it's consume
 
-
-        val userRepository = UserRepository()
-        val emailService = EmailService()
-
-        val userRegistrationService = UserRegistrationService(userRepository,emailService)
+        val component = DaggerUserRegistrationComponent.builder().build()
+        val userRegistrationService = component.getUserRegistrationService()
+        val emailService = component.getEmailService()
         userRegistrationService.registerUser("Usama@gmail.com","1111111")
 
     }
