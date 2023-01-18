@@ -1,10 +1,11 @@
 package com.example.di
 
 import javax.inject.Inject
+import javax.inject.Named
 
 class UserRegistrationService @Inject constructor(
     private val userRepository: UserRepository,
-    private val notificationService: NotificationService) {
+    @MessageQualifier private val notificationService: NotificationService) {
 
     // This implementation violate the all below mentioned points, to overcome this issue
     // we'll used constructor injection (Manual Dependency Injection)

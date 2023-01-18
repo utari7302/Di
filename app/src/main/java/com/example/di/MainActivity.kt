@@ -45,7 +45,16 @@ class MainActivity : AppCompatActivity() {
         // @Provides
         // @Bind
 
-        val component = DaggerUserRegistrationComponent.builder().build()
+        // Qualifiers
+        // @Named is qualifiers
+
+        // We will provide value at runtime to dagger for create an objects
+
+
+        val component = DaggerUserRegistrationComponent.builder()
+            //.notificationServiceModule(NotificationServiceModule(3))
+            .build()
+
         component.inject(this)
 
         userRegistrationService.registerUser("Usama@gmail.com","1111111")
